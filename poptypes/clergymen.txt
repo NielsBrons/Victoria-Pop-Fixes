@@ -264,11 +264,8 @@ promote_to =
 	craftsmen = {
 		factor = 0.01
 		modifier = {
-			factor = 1.2
-			not = { education_spending = 0.35 }
-		}
-		modifier = {
-			factor = 1.4
+			factor = 2.4
+			not = { education_spending = 0.4 }
 			state_scope = {
 				work_available = {
 					worker = craftsmen
@@ -290,11 +287,8 @@ promote_to =
 	farmers = { #and labourers
 		factor = 0.01
 		modifier = {
-			factor = 1.2
-			not = { education_spending = 0.35 }
-		}
-		modifier = {
-			factor = 1.2
+			factor = 2.4
+			not = { education_spending = 0.4 }
 			location = {
 				OR = {
 					work_available = {
