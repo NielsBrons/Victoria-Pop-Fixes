@@ -1,0 +1,5259 @@
+sprite = 8
+color = { 75 193 237 }
+strata = poor
+unemployment = yes
+equivalent = labourers
+
+everyday_needs = {
+	timber = 1.1
+	coffee = 0.55
+	tea = 2.35
+	tobacco = 1.1
+	coal = 2.1
+	liquor = 1.0
+	glass = 1.0
+	fabric = 2.0
+	steel = 2.0
+}
+
+life_needs = {
+	cattle = 0.75
+	wool =  1.1
+	fish =  1.0
+	fruit =  1.15
+	grain =  2.0
+}
+
+luxury_needs = {
+	fertilizer = 1.0
+	opium = 0.8
+	silk = 1.0
+	tropical_wood = 0.5
+	regular_clothes = 2.1
+	furniture = 0.55
+	wine = 1.3
+	paper = 1.3
+	telephones = 1.0
+	automobiles = 0.5
+	radio = 0.5
+}
+
+country_migration_target =
+{
+	factor = 1
+
+	modifier = {
+		factor = 0
+		NOT = {
+			work_available = {
+				worker = farmers
+				worker = labourers
+			}
+		}
+	}
+	modifier = {
+		factor = 0.1
+		unemployment = 0.1
+	}
+	modifier = {
+		factor = 2.0
+		has_pop_culture = THIS
+	}
+	modifier = {
+		factor = 5.0
+		government = democracy
+	}
+	modifier = {
+		factor = 4.0
+		OR = { 
+			continent = north_america
+			continent = south_america
+		}
+	}
+	
+}
+
+migration_target =
+{
+	factor = 0.01
+	
+	modifier = {
+		factor = 0
+		NOT = {
+			work_available = {
+				worker = farmers
+				worker = labourers
+			}
+		}
+	}
+	modifier = {
+		factor = 1.2
+		has_pop_culture = THIS
+	}
+	modifier = {
+		factor = 1.2
+		has_pop_religion = THIS
+	}
+	modifier = {
+		factor = 0.6
+		unemployment_by_type = { type = farmers value = 0.1  }
+	}
+	modifier = {
+		factor = 0.6
+		terrain = mountain
+	}
+	modifier = {
+		factor = 0.1
+		terrain = desert
+	}
+	modifier = {
+		factor = 0.6
+		terrain = marsh
+	}
+	modifier = {
+		factor = 0.2
+		terrain = arctic
+	}
+}
+
+promote_to =
+{
+	artisans =
+	{
+		factor = 0.01
+		group = {
+			modifier = {
+				factor = -20
+				NOT = {
+					cash_reserves = 1
+				}
+			}
+			modifier = {
+				factor = 1.2
+				cash_reserves = 1.5
+			}
+			modifier = {
+				factor = 1.2
+				cash_reserves = 2.0
+			}
+			modifier = {
+				factor = 1.2
+				cash_reserves = 2.5
+			}
+		}
+		group = {
+			modifier = {
+				factor = 1.1
+				not = { everyday_needs = 0.9 }
+			}
+			modifier = {
+				factor = 1.1
+				not = { everyday_needs = 0.8 }
+			}
+			modifier = {
+				factor = 1.1
+				not = { everyday_needs = 0.7 }
+			}
+		}
+	}
+	bureaucrats =
+	{
+		factor = 0.01
+		group = {
+			modifier = {
+				factor = -0.25
+				literacy = 0.30
+			}
+			modifier = {
+				factor = -0.25
+				literacy = 0.40
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.50
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.6
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.7
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.8
+			}
+		}
+		group = {
+			modifier = {
+				factor = -5
+				NOT = { crime_fighting = 0.4 }
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.1
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.2
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.3
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.4
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.5
+			}
+			modifier = {
+				factor = 0.2
+				crime_fighting = 0.6
+			}
+			modifier = {
+				factor = 0.3
+				crime_fighting = 0.7
+			}
+			modifier = {
+				factor = 0.3
+				crime_fighting = 0.8
+			}
+		}
+	}
+	soldiers =
+	{
+		factor = 0.01
+		modifier = {
+			factor = -0.99
+			NOT = { military_spending = 0.4 }
+		}
+		group = {
+			modifier = {
+				factor = 0.2
+				military_spending = 0.5
+			}
+			modifier = {
+				factor = 0.3
+				military_spending = 0.6
+			}
+			modifier = {
+				factor = 0.3
+				military_spending = 0.7
+			}
+			modifier = {
+				factor = 0.3
+				military_spending = 0.8
+			}
+			modifier = {
+				factor = 0.3
+				military_spending = 0.9
+			}
+			modifier = {
+				factor = 0.3
+				military_spending = 1
+			}
+		}
+	}
+	craftsmen = 
+	{
+		factor = 0.01
+		modifier = {
+			factor = -10
+			unemployment_by_type = { type = craftsmen value = 0.25  }
+		}
+		group = {
+			modifier = {
+				factor = 1.5
+				location = {
+					work_available = {
+						worker = craftsmen
+					}
+				}
+			}
+			modifier = {
+				factor = 3.0
+				location = {
+					work_available = {
+						worker = craftsmen
+					}
+				
+				}
+				unemployment = 0.1
+			}
+		}	
+		modifier = {
+			factor = -20
+			location = {
+				NOT = {
+					work_available = {
+						worker = craftsmen
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = -50
+			OR = {
+				location = {
+					is_colonial = yes
+				}
+				country = {
+					civilized = no
+				}
+			}
+		}
+	}
+	clergymen =
+	{
+		factor = 0.01
+		group = {
+			modifier = {
+				factor = -0.25
+				literacy = 0.30
+			}
+			modifier = {
+				factor = -0.25
+				literacy = 0.40
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.50
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.6
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.7
+			}
+			modifier = {
+				factor = 0.25
+				literacy = 0.8
+			}
+		}
+		group = {
+			modifier = {
+				factor = 0.1
+				education_spending = 0
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.1
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.2
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.3
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.4
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.5
+			}
+			modifier = {
+				factor = 0.2
+				education_spending = 0.6
+			}
+			modifier = {
+				factor = 0.3
+				education_spending = 0.7
+			}
+			modifier = {
+				factor = 0.3
+				education_spending = 0.8
+			}
+		}
+		
+		group = {
+			modifier = {
+				factor = -0.5
+				consciousness = 4
+			}
+			modifier = {
+				factor = -1
+				consciousness = 5
+			}
+			modifier = {
+				factor = -2
+				consciousness = 6
+			}
+			modifier = {
+				factor = -4
+				consciousness = 7
+			}
+			modifier = {
+				factor = -8
+				consciousness = 8
+			}
+		}
+	}
+	aristocrats = 
+	{
+		factor = 0.01
+		#modifier = {
+		#	factor = 1.4
+		#	luxury_needs = 0.99
+		#}
+		
+		modifier = {
+				factor = -20
+				NOT = {
+					cash_reserves = 1
+				}
+			}
+		modifier = {
+			factor = -0.1
+			NOT = { literacy = 0.40 }
+		}
+							
+		group = {
+			
+			modifier = {
+				factor = 0.05
+				cash_reserves = 1
+			}
+			modifier = {
+				factor = 0.05
+				cash_reserves = 1.5
+			}
+			modifier = {
+				factor = 0.1
+				cash_reserves = 2
+			}
+		}
+	}
+}
+
+ideologies = {
+	
+	fascist = {
+		factor = 1
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.01
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.02
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.03
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.04
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.05
+		}
+		modifier = {
+			factor = 2
+		 	revanchism = 0.10
+		}
+		modifier = {
+			factor = 4
+		 	revanchism = 0.15
+		}
+		modifier = {
+			factor = 8
+		 	revanchism = 0.20
+		}
+		modifier = {
+			factor = 5
+			nationalvalue = nv_order
+			ruling_party_ideology = fascist
+		}
+	}
+	
+	reactionary = {
+		factor = 1
+		modifier = {
+			factor = 5
+			nationalvalue = nv_order
+			ruling_party_ideology = reactionary
+		}
+		modifier = {
+			factor = 2
+			militancy = 6
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			militancy = 7
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			militancy = 8
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			militancy = 9
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 10
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 20
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 30
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 40
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 50
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 60
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 70
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 80
+		}
+		modifier = {
+			factor = 1.5
+			yes_slavery = 90
+		}
+	}
+
+	conservative = {
+		factor = 5
+		modifier = {
+			factor = 1.1
+			NOT = { militancy = 4 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { militancy = 3 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { militancy = 2 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { militancy = 1 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { militancy = 4 }
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { militancy = 3 }
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { militancy = 2 }
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { militancy = 1 }
+			NOT = { consciousness = 6 }
+		}
+		modifier = {
+			factor = 2
+			nationalvalue = nv_order
+			NOT = { ruling_party_ideology = reactionary }
+			NOT = { ruling_party_ideology = fascist }
+		}
+	}
+
+	socialist = {
+		factor = 1
+		modifier = {
+			factor = 5
+			nationalvalue = nv_equality
+			NOT = { ruling_party_ideology = communist }
+		}
+		modifier = {
+			factor = 5
+			NOT = {militancy = 6 }
+			social_reform_want = 0.05
+		}
+		modifier = {
+			factor = 5
+			NOT = {militancy = 6 }
+			social_reform_want = 0.10
+		}
+		modifier = {
+			factor = 5
+			NOT = {militancy = 6 }
+			social_reform_want = 0.15
+		}
+		modifier = {
+			factor = 5
+			NOT = {militancy = 6 }
+			social_reform_want = 0.20
+		}
+	}
+
+	communist = {
+		factor = 1
+		modifier = {
+			factor = 0
+				NOT = { ruling_party_ideology = communist }
+				NOT = { social_reform_want = 0.5 }
+		}
+		modifier = {
+			factor = 2
+			nationalvalue = nv_equality
+			ruling_party_ideology = communist 
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6
+			social_reform_want = 0.05
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6
+			social_reform_want = 0.10
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6
+			social_reform_want = 0.15
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6 
+			social_reform_want = 0.20
+		}
+		modifier = {
+			factor = 1.1
+			militancy = 6
+			consciousness = 4
+		}
+		modifier = {
+			factor = 1.1
+			militancy = 7
+			consciousness = 4
+		}
+		modifier = {
+			factor = 1.1
+			militancy = 8
+			consciousness = 4
+		}
+		modifier = {
+			factor = 1.1
+			militancy = 9
+			consciousness = 4
+		}
+	}
+	liberal = {
+		factor = 1.1
+		modifier = {
+			factor = 1.5
+			NOT = { is_ideology_enabled = socialist }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { is_ideology_enabled = communist }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { is_ideology_enabled = anarcho_liberal }
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty
+			NOT = { ruling_party_ideology = anarcho_liberal }
+		}
+		modifier = {
+			factor = 4
+			NOT = {militancy = 6 }
+			political_reform_want = 0.05
+		}
+		modifier = {
+			factor = 4
+			NOT = {militancy = 6 }
+			political_reform_want = 0.10
+		}
+		modifier = {
+			factor = 4
+			NOT = {militancy = 6 }
+			political_reform_want = 0.15
+		}
+		modifier = {
+			factor = 4
+			NOT = {militancy = 6 }
+			political_reform_want = 0.20
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 10
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 20
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 30
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 40
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 50
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 60
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 70
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 80
+		}
+		modifier = {
+			factor = 1.5
+			no_slavery = 90
+		}
+	}
+	anarcho_liberal = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			NOT = { political_reform_want = 0.05 }
+			NOT = {	ruling_party_ideology = anarcho_liberal }
+		}
+		modifier = {
+			factor = 5
+			nationalvalue = nv_liberty
+			ruling_party_ideology = anarcho_liberal
+		}
+		modifier = {
+			factor = 2
+			militancy = 6 
+			political_reform_want = 0.05
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6
+			political_reform_want = 0.10
+		}
+		modifier = {
+			factor = 2	
+			militancy = 6 
+			political_reform_want = 0.15
+		}
+		modifier = {
+			factor = 2
+			militancy = 6
+			political_reform_want = 0.20
+		}
+	}
+}
+issues = {
+	protectionism = {
+		factor = 3
+		modifier = {
+			factor = 5
+			NOT = {
+				life_needs = 1.0
+			}
+			NOT = {
+				country = { trade_policy = protectionism }
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			NOT = {
+				country = { trade_policy = free_trade }
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}	
+	}
+	free_trade = {
+		factor = 1
+		modifier = {
+			factor = 5
+			NOT = {
+				life_needs = 1.0
+			}
+			NOT = {
+				country = { trade_policy = free_trade }
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			NOT = {
+				country = { trade_policy = protectionism }
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	laissez_faire = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			NOT = {
+				life_needs = 1.0
+			}
+			country = {
+				economic_policy = laissez_faire
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			country = { 
+				economic_policy = laissez_faire 
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	} 
+	interventionism = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = {
+				life_needs = 1.0
+			}
+			country = {
+				economic_policy = interventionism
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			country = { 
+				economic_policy = interventionism
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	} 
+	state_capitalism = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				life_needs = 1.0
+			}
+			country = {
+				economic_policy = state_capitalism
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			country = { 
+				economic_policy = state_capitalism
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	} 
+	planned_economy = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = {
+				life_needs = 1.0
+			}
+			country = {
+				economic_policy = planned_economy
+			}
+		}
+		modifier = {
+			factor = 5
+			luxury_needs = 1.0
+			country = { 
+				economic_policy = planned_economy
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	} 
+	jingoism = {
+		factor = 1
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.01
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.02
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.03
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.04
+		}
+		modifier = {
+			factor = 1.1
+		 	revanchism = 0.05
+		}
+		modifier = {
+			factor = 2
+		 	revanchism = 0.10
+		}
+		modifier = {
+			factor = 4
+		 	revanchism = 0.15
+		}
+		modifier = {
+			factor = 8
+		 	revanchism = 0.20
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			NOT = {
+				war_exhaustion = 1
+			}
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			NOT = {
+				war_exhaustion = 2
+			}
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			NOT = {
+				war_exhaustion = 3
+			}
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			NOT = {
+				war_exhaustion = 4
+			}
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			NOT = {
+				war_exhaustion = 5
+			}
+		}	
+		modifier = {
+			factor = 2
+			war = no
+			is_greater_power = yes
+			any_neighbor_country = {
+				is_greater_power = yes
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 2
+			war = no
+			civilized = yes
+			NOT = { is_greater_power = yes }
+			any_neighbor_country = {
+				civilized = yes
+				NOT = { is_greater_power = yes }
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 2
+			war = no
+			NOT = { civilized = yes }
+			any_neighbor_country = {
+				NOT = { civilized = yes }
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	pro_military = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			war = yes
+			NOT = {
+				war_exhaustion = 1
+			}
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			NOT = {
+				war_exhaustion = 2
+			}
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			NOT = {
+				war_exhaustion = 3
+			}
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			NOT = {
+				war_exhaustion = 4
+			}
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			NOT = {
+				war_exhaustion = 5
+			}
+		}
+		modifier = {
+			factor = 3
+			war = no
+			is_greater_power = yes
+			any_neighbor_country = {
+				is_greater_power = yes
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 3
+			war = no
+			NOT = { is_greater_power = yes }
+			civilized = yes
+			any_neighbor_country = {
+				civilized = yes
+				NOT = { is_greater_power = yes }
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 3
+			war = no
+			NOT = { civilized = yes }
+			any_neighbor_country = {
+				NOT = { civilized = yes }
+				military_score = THIS
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	anti_military = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			war = yes
+			war_exhaustion = 6
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			war_exhaustion = 7
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			war_exhaustion = 8
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			war_exhaustion = 9
+		}
+		modifier = {
+			factor = 1.5
+			war = yes
+			war_exhaustion = 10
+		}
+		modifier = {
+			factor = 3
+			war = no
+			is_greater_power = yes
+			any_neighbor_country = {
+				is_greater_power = yes
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 3
+			war = no
+			NOT = { is_greater_power = yes }
+			civilized = yes
+			any_neighbor_country = {
+				civilized = yes
+				NOT = { is_greater_power = yes }
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 3
+			war = no
+			NOT = { civilized = yes }
+			any_neighbor_country = {
+				NOT = { civilized = yes }
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	pacifism = {
+		factor = 2
+		modifier = {
+			factor = 2
+			war = yes
+			war_exhaustion = 6
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			war_exhaustion = 7
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			war_exhaustion = 8
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			war_exhaustion = 9
+		}
+		modifier = {
+			factor = 2
+			war = yes
+			war_exhaustion = 10
+		}
+		modifier = {
+			factor = 2
+			war = no
+			is_greater_power = yes
+			any_neighbor_country = {
+				is_greater_power = yes
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 2
+			war = no
+			NOT = { is_greater_power = yes }
+			civilized = yes
+			any_neighbor_country = {
+				civilized = yes
+				NOT = { is_greater_power = yes }
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 2
+			war = no
+			NOT = { civilized = yes }
+			any_neighbor_country = {
+				NOT = { civilized = yes }
+				NOT = { military_score = THIS }
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	pro_atheism = {
+		factor = 1
+		modifier = {
+			factor = 0.25
+		}
+		modifier = {
+			factor = 1.25
+			consciousness = 8
+			NOT = { is_state_religion = yes }
+		}
+		modifier = {
+			factor = 1.1
+			consciousness = 6
+			NOT = { is_state_religion = yes }
+			country = {
+				religious_policy = moralism
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}	
+	}
+	secularized = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+		}
+		modifier = {
+			factor = 1.25
+			consciousness = 6
+			NOT = { consciousness = 8 }
+			NOT = { is_state_religion = yes }
+		}
+		modifier = {
+			factor = 1.1
+			consciousness = 6
+			NOT = { is_state_religion = yes }
+			country = {
+				religious_policy = pluralism
+			}
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	pluralism = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+		}
+		modifier = {
+			factor = 1.25
+			consciousness = 2
+			NOT = { consciousness = 4 }
+			is_state_religion = yes
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}	
+	}
+	moralism = {
+		factor = 1
+		modifier = {
+			factor = 0.75
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { consciousness = 2 }
+			is_state_religion = yes
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	residency = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			NOT = { consciousness = 5 }
+		} 
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_order
+			is_primary_culture = yes
+			consciousness = 5
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_order
+			is_primary_culture = yes
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			nationalvalue = nv_order
+			is_primary_culture = yes
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			nationalvalue = nv_order
+			is_primary_culture = yes
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			nationalvalue = nv_order
+			is_primary_culture = yes
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.1
+			is_primary_culture = yes
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			is_primary_culture = yes
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}	
+	}
+	limited_citizenship = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			NOT = { consciousness = 5 }
+		} 
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_equality
+			consciousness = 5
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_equality
+			consciousness = 6
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_equality
+			consciousness = 7
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_equality
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_equality
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.1
+			is_accepted_culture = yes
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			is_accepted_culture = yes
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.1
+			is_primary_culture = yes
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			is_primary_culture = yes
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+	full_citizenship = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			NOT = { consciousness = 5 }
+		}  
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty 
+			consciousness = 5
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty 
+			consciousness = 6
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty 
+			consciousness = 7
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty 
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			nationalvalue = nv_liberty 
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { is_primary_culture = yes }
+			NOT = { is_accepted_culture = yes }
+			consciousness = 5
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { is_primary_culture = yes }
+			NOT = { is_accepted_culture = yes }
+			consciousness = 6
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { is_primary_culture = yes }
+			NOT = { is_accepted_culture = yes }
+			consciousness = 7
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { is_primary_culture = yes }
+			NOT = { is_accepted_culture = yes }
+			consciousness = 8
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { is_primary_culture = yes }
+			NOT = { is_accepted_culture = yes }
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 6
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 7
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 8
+		}
+		modifier = {
+			factor = 0.9
+			consciousness = 9
+		}
+	}
+
+	yes_slavery = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			country = {
+				slavery = no_slavery
+			}
+		}
+		modifier = {
+			factor = 2
+			country = {
+				slavery = yes_slavery
+			}
+			NOT = {
+				life_needs = 1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			country = {
+				slavery = yes_slavery
+			}
+			NOT = {
+				everyday_needs = 1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			state_scope = {
+				is_slave = yes
+			}
+		}	
+		modifier = {
+			factor = 1.5
+			state_scope = {
+				is_slave = yes
+			}
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			state_scope = {
+				is_slave = yes
+			}
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2.5
+			state_scope = {
+				is_slave = yes
+			}
+			consciousness = 8
+		}	
+		modifier = {
+			factor = 3
+			state_scope = {
+				is_slave = yes
+			}
+			consciousness = 9
+		}	
+	}
+
+	no_slavery = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			country = {
+				slavery = no_slavery
+			}
+		}
+		modifier = {
+			factor = 2
+			life_needs = 1.0
+			everyday_needs = 1.0
+		}
+		modifier = {
+			factor = 2
+			life_needs = 1.0
+			everyday_needs = 1.0
+			luxury_needs = 0.5
+		}
+		modifier = {
+			factor = 2
+			life_needs = 1.0
+			everyday_needs = 1.0
+			luxury_needs = 1.0
+		}
+		modifier = {
+			factor = 1.5
+			state_scope = {
+				is_slave = no
+			}
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			state_scope = {
+				is_slave = no
+			}
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2.5
+			state_scope = {
+				is_slave = no
+			}
+			consciousness = 8
+		}
+		modifier = {
+			factor = 3
+			state_scope = {
+				is_slave = no
+			}
+			consciousness = 9
+		}
+	}
+	
+	landed_voting = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = {
+					is_next_reform = landed_voting
+				}
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.40 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.50 }
+		}
+		modifier = {
+			factor = 4
+			consciousness = 7
+		}
+		modifier = {
+			factor = 4
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 4
+			consciousness = 9
+		}
+	}
+	wealth_weighted_voting = {
+		factor = 2
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = {
+					is_next_reform = wealth_weighted_voting
+				}
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.40 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.50 }
+		}
+		modifier = {
+			factor = 4
+			consciousness = 7
+		}
+		modifier = {
+			factor = 4
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 4
+			consciousness = 9
+		}
+	}			
+	wealth_voting = {
+		factor = 3
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = {
+					is_next_reform = wealth_voting
+				}
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.40 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.50 }
+		}
+		modifier = {
+			factor = 4
+			consciousness = 7
+		}
+		modifier = {
+			factor = 4
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 4
+			consciousness = 9
+		}
+	}
+	universal_weighted_voting = {
+		factor = 4
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = {
+					is_next_reform = universal_weighted_voting
+				}
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.40 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.50 }
+		}
+		modifier = {
+			factor = 4
+			consciousness = 7
+		}
+		modifier = {
+			factor = 4
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 4
+			consciousness = 9
+		}
+	}
+	universal_voting = {
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				vote_franschise = universal_voting
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.40 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.50 }
+		}
+		modifier = {
+			factor = 4
+			consciousness = 7
+		}
+		modifier = {
+			factor = 4
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 4
+			consciousness = 9
+		}
+	}
+	jefferson_method = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = {
+					is_next_reform = proportional_representation
+				}
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+	}
+	proportional_representation = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				voting_system = proportional_representation
+				NOT = { consciousness = 6 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+	}
+	harassment = {
+		factor = 3
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { vote_franschise = universal_weighted_voting }
+				NOT = { vote_franschise = universal_voting }
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = gerrymandering
+				}
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+	}
+	gerrymandering = {
+		factor = 2
+		modifier = {
+			factor = 0
+			OR = {
+				vote_franschise = none_voting
+				vote_franschise = landed_voting
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = non_secret_ballots
+				}
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+	}
+	non_secret_ballots = {
+		factor = 2
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { vote_franschise = universal_weighted_voting }
+				NOT = { vote_franschise = universal_voting }
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = secret_ballots
+				}
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+	}
+	secret_ballots = {
+		factor = 2
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { vote_franschise = universal_weighted_voting }
+				NOT = { vote_franschise = universal_voting }
+				NOT = { consciousness = 6 }
+				political_parties = secret_ballots
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+	}
+
+	yes_meeting = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				public_meetings = yes_meeting
+				NOT = { consciousness = 5 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.20 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { agree_with_ruling_party = 0.30 }
+		}
+		modifier = {
+			factor = 2
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+	}
+
+	censored_press = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				press_rights = censored_press
+				press_rights = free_press
+				NOT = { consciousness = 5 }
+				NOT = { literacy = 0.40 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.50
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.60
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.70
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.80
+			consciousness = 9
+		}
+	}
+	free_press = {
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				press_rights = state_press
+				press_rights = free_press
+				NOT = { consciousness = 5 }
+				NOT = { literacy = 0.40 }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.50
+			consciousness = 6
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.60
+			consciousness = 7
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.70
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			literacy = 0.80
+			consciousness = 9
+		}
+	}
+
+	state_controlled = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				NOT = { consciousness = 7 }
+ 				luxury_needs =  1.0
+				NOT = {
+					is_next_reform = state_controlled
+				}
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.50
+		
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.705
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.999
+		}
+	}
+	non_socialist = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				NOT = { consciousness = 7 }
+ 				luxury_needs =  1.0
+				NOT = {
+					is_next_reform = non_socialist
+				}
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.50
+		
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.705
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.999
+		}
+	}
+	all_trade_unions = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				NOT = { consciousness = 7 }
+ 				luxury_needs =  1.0
+				trade_unions = all_trade_unions
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.50
+		
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.705
+		}
+		modifier = {
+			factor = 1.5
+			literacy = 0.999
+		}
+	}
+state_equal_weight = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { consciousness = 5 }
+				NOT = {
+					country = {
+						upper_house = {
+							ideology = reactionary
+							value = 0.15
+						}
+					}
+				}
+				NOT = { upper_house_composition = appointed }
+				vote_franschise = none_voting 
+				NOT = { nationalvalue = nv_liberty }
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.05
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.10
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.15
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.20
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.05
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.10
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.15
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.20
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.20
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.25
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.30
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.35
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.40
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.45
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.50
+				}
+			}
+		}
+	}
+	population_equal_weight = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { consciousness = 5 }
+				NOT = {
+					country = {
+						upper_house = {
+							ideology = reactionary
+							value = 0.15
+						}
+					}
+				}
+				NOT = { upper_house_composition = appointed }
+				vote_franschise = none_voting 
+				nationalvalue = nv_liberty
+				luxury_needs =  1.0
+			}
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.05
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.10
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.15
+		}
+		modifier = {
+			factor = 1.1
+			social_reform_want = 0.20
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.05
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.10
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.15
+		}
+		modifier = {
+			factor = 1.1
+			political_reform_want =  0.20
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.20
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.25
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.30
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.35
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.40
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.45
+				}
+			}
+		}
+		modifier = {
+			factor = 1.1
+			country = {
+				upper_house = {
+					ideology = reactionary
+					value = 0.50
+				}
+			}
+		}
+	}
+	trinket_wage = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = trinket_wage
+				}
+				unemployment = 1.0
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = trinket_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 3
+			pensions = trinket_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 3
+			work_hours = fourteen_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = trinket_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			health_care  = trinket_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	low_minimum_wage = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = low_minimum_wage
+				}
+				unemployment = 1.0
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 3
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	acceptable_minimum_wage = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = acceptable_minimum_wage
+				}
+				unemployment = 1.0
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 3
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 3
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	good_minimum_wage = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = good_minimum_wage
+				}
+				unemployment = 1.0
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 3
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 3
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+trinket_safety = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = trinket_safety
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = trinket_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			pensions = trinket_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = fourteen_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = trinket_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = trinket_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 4 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.75
+		}
+	}
+	low_safety = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = low_safety
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 4 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.75
+		}
+	}
+	acceptable_safety = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = acceptable_safety
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 4 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.75
+		}
+	}
+	good_safety  = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = good_safety 
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 4 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			luxury_needs = 0.75
+		}
+	}
+trinket_subsidies = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = trinket_subsidies
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = trinket_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			pensions = trinket_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = fourteen_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = trinket_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = trinket_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		} 
+		modifier = {
+			factor = 4
+			unemployment = 0.25
+		}	
+		modifier = {
+			factor = 4
+			unemployment = 0.50
+		}
+		modifier = {
+			factor = 4
+			unemployment = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.75
+		}
+	}
+	low_subsidies = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = low_subsidies
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			pensions = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		} 
+		modifier = {
+			factor = 4
+			unemployment = 0.25
+		}	
+		modifier = {
+			factor = 4
+			unemployment = 0.50
+		}
+		modifier = {
+			factor = 4
+			unemployment = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.75
+		}
+	}
+
+	acceptable_subsidies = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = acceptable_subsidies
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			pensions = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		} 
+		modifier = {
+			factor = 4
+			unemployment = 0.25
+		}	
+		modifier = {
+			factor = 4
+			unemployment = 0.50
+		}
+		modifier = {
+			factor = 4
+			unemployment = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.75
+		}
+	}
+	
+	good_subsidies = {
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = good_subsidies
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		} 
+		modifier = {
+			factor = 4
+			unemployment = 0.25
+		}	
+		modifier = {
+			factor = 4
+			unemployment = 0.50
+		}
+		modifier = {
+			factor = 4
+			unemployment = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5 
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			luxury_needs = 0.75
+		}
+	}
+	trinket_pensions = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = trinket_pensions
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = trinket_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = trinket_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = fourteen_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = trinket_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = trinket_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	low_pensions = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = low_pensions
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	acceptable_pensions = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = acceptable_pensions
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	good_pensions = { 
+		factor = 3
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = good_pensions
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			health_care  = good_health_care 
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}	
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	trinket_health_care = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 7 }
+				NOT = {
+					is_next_reform = trinket_health_care
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = trinket_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = trinket_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = fourteen_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = trinket_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = trinket_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	low_health_care = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 7 }
+				NOT = {
+					is_next_reform = low_health_care
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = twelve_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	acceptable_health_care = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 7 }
+				NOT = {
+					is_next_reform = acceptable_health_care
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = ten_hours
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	good_health_care = { 
+		factor = 1
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 7 }
+				NOT = {
+					is_next_reform = good_health_care
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			work_hours = eight_hours
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	fourteen_hours = { 
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = fourteen_hours
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = trinket_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = trinket_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			health_care = trinket_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = good_health_care  
+		}
+		modifier = {
+			factor = 2
+			wage_reform = trinket_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = trinket_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	twelve_hours = { 
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = twelve_hours
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = low_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = low_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			health_care = low_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = good_health_care  
+		}
+		modifier = {
+			factor = 2
+			wage_reform = low_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = low_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	ten_hours = { 
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = ten_hours
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = acceptable_safety
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = acceptable_subsidies
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			health_care = acceptable_health_care
+		}
+		modifier = {
+			factor = 2
+			health_care = good_health_care  
+		}
+		modifier = {
+			factor = 2
+			wage_reform = acceptable_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions  = acceptable_pensions
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+	eight_hours = { 
+		factor = 2
+		modifier = {
+			factor = 0 
+			OR = {
+				luxury_needs = 1.0
+				NOT = { consciousness = 6 }
+				NOT = {
+					is_next_reform = eight_hours
+				}
+				NOT = { is_ideology_enabled = socialist }
+			}	
+		}
+		modifier = {
+			factor = 2
+			safety_regulations = good_safety
+		}
+		modifier = {
+			factor = 2
+			unemployment_subsidies = good_subsidies
+		}
+		modifier = {
+			factor = 2
+			health_care = good_health_care  
+		}
+		modifier = {
+			factor = 2
+			wage_reform = good_minimum_wage
+		}
+		modifier = {
+			factor = 2
+			pensions = good_pensions
+		}
+		modifier = {
+			factor = 2
+			consciousness = 7
+		}  
+		modifier = {
+			factor = 2
+			consciousness = 8
+		}
+		modifier = {
+			factor = 2
+			consciousness = 9
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.5
+			life_needs = 0.50
+		}
+		modifier = {
+			factor = 0.5
+			life_needs = 0.75
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.25
+		}	
+		modifier = {
+			factor = 4
+			everyday_needs = 0.50
+		}
+		modifier = {
+			factor = 4
+			everyday_needs = 0.75
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.25
+		}	
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.50
+		}
+		modifier = {
+			factor = 0.25
+			luxury_needs = 0.75
+		}
+	}
+}

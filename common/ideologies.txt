@@ -1,0 +1,381 @@
+# If you add types, and use those tags, do not change them without changing everywhere they are used.
+
+
+fascist_group = {
+	fascist = {
+		color = { 60 60 60 }
+		date = 1905.1.1
+	
+		
+		add_political_reform = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { ruling_party_ideology = fascist }
+			}
+		}
+	
+	
+		remove_political_reform = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { ruling_party_ideology = fascist }
+			}
+		}
+	
+	
+		add_social_reform = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { ruling_party_ideology = fascist }
+			}
+		}
+	
+	
+		remove_social_reform = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { ruling_party_ideology = fascist }
+			}
+		}
+		
+		
+		
+	}
+}	
+
+conservative_group = {
+	reactionary = {
+		color = { 30 30 100 }
+		
+		add_political_reform = {
+			factor = 0
+		}
+		remove_political_reform = {
+			factor = 1
+		}
+		add_social_reform = {
+			factor = 0
+		}
+		remove_social_reform = {
+			factor = 1
+		}	
+	}
+	
+	conservative = {
+		color = { 10 10 250 }
+		
+		can_reduce_militancy = yes
+		
+		add_political_reform = {
+			factor = 2
+			modifier = {
+				factor = 0.5
+				militancy = 5
+			}
+			modifier = {
+				factor = 0.45
+				NOT = { militancy = 5 }
+				militancy = 4.5
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { militancy = 4.5 }
+				militancy = 4
+			}
+			modifier = {
+				factor = 0.35
+				NOT = { militancy = 4 }
+				militancy = 3.5
+			}
+			modifier = {
+				factor = 0.3
+				NOT = { militancy = 3.5 }
+				militancy = 3
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { militancy = 3 }
+				militancy = 2.5
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { militancy = 2.5 }
+				militancy = 2
+			}
+			modifier = {
+				factor = 0.15
+				NOT = { militancy = 2 }
+				militancy = 1.5
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { militancy = 1.5 }
+				militancy = 1
+			}
+			modifier = {
+				factor = 0.05
+				NOT = { militancy = 1 }
+				militancy = 0.5
+			}
+			modifier = {
+				factor = 0
+				NOT = { militancy = 0.5 }
+			}
+			
+		}
+		remove_political_reform = {
+			factor = 0
+		}
+		add_social_reform = {
+			factor = 2
+			modifier = {
+				factor = 0.5
+				militancy = 5
+			}
+			modifier = {
+				factor = 0.45
+				NOT = { militancy = 5 }
+				militancy = 4.5
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { militancy = 4.5 }
+				militancy = 4
+			}
+			modifier = {
+				factor = 0.35
+				NOT = { militancy = 4 }
+				militancy = 3.5
+			}
+			modifier = {
+				factor = 0.3
+				NOT = { militancy = 3.5 }
+				militancy = 3
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { militancy = 3 }
+				militancy = 2.5
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { militancy = 2.5 }
+				militancy = 2
+			}
+			modifier = {
+				factor = 0.15
+				NOT = { militancy = 2 }
+				militancy = 1.5
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { militancy = 1.5 }
+				militancy = 1
+			}
+			modifier = {
+				factor = 0.05
+				NOT = { militancy = 1 }
+				militancy = 0.5
+			}
+			modifier = {
+				factor = 0
+				NOT = { militancy = 0.5 }
+			}
+			
+		}
+		remove_social_reform = {
+			factor = 0
+		}
+		
+	
+	}
+}
+socialist_group = {
+	socialist = {
+		color = { 255 0 0 }
+		date = 1860.1.1
+		
+		add_political_reform = {
+				factor = 1
+			factor = 2
+			modifier = {
+				factor = 0.5
+				militancy = 5
+			}
+			modifier = {
+				factor = 0.45
+				NOT = { militancy = 5 }
+				militancy = 4.5
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { militancy = 4.5 }
+				militancy = 4
+			}
+			modifier = {
+				factor = 0.35
+				NOT = { militancy = 4 }
+				militancy = 3.5
+			}
+			modifier = {
+				factor = 0.3
+				NOT = { militancy = 3.5 }
+				militancy = 3
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { militancy = 3 }
+				militancy = 2.5
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { militancy = 2.5 }
+				militancy = 2
+			}
+			modifier = {
+				factor = 0.15
+				NOT = { militancy = 2 }
+				militancy = 1.5
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { militancy = 1.5 }
+				militancy = 1
+			}
+			modifier = {
+				factor = 0.05
+				NOT = { militancy = 1 }
+				militancy = 0.5
+			}
+			modifier = {
+				factor = 0
+				NOT = { militancy = 0.5 }
+			}
+			
+		}
+		remove_political_reform = {
+			factor = 0
+		}
+		add_social_reform = {
+			factor = 1
+		}
+		remove_social_reform = {
+			factor = 0
+		}
+	}
+	
+	communist = {
+		color = { 150 10 10 }
+		date = 1865.1.1
+		
+		add_political_reform = {
+			factor = 0
+		}
+		remove_political_reform = {
+			factor = 1
+		}
+		add_social_reform = {
+			factor = 1
+		}
+		remove_social_reform = {
+			factor = 0
+		}	
+	}
+}
+
+liberal_group = {
+	
+	liberal = {
+		color = { 255 255 0 }
+		
+		
+		add_political_reform = {
+			factor = 1
+		}
+		remove_political_reform = {
+			factor = 0
+		}
+		add_social_reform = {
+			factor = 2
+			modifier = {
+				factor = 0.5
+				militancy = 5
+			}
+			modifier = {
+				factor = 0.45
+				NOT = { militancy = 5 }
+				militancy = 4.5
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { militancy = 4.5 }
+				militancy = 4
+			}
+			modifier = {
+				factor = 0.35
+				NOT = { militancy = 4 }
+				militancy = 3.5
+			}
+			modifier = {
+				factor = 0.3
+				NOT = { militancy = 3.5 }
+				militancy = 3
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { militancy = 3 }
+				militancy = 2.5
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { militancy = 2.5 }
+				militancy = 2
+			}
+			modifier = {
+				factor = 0.15
+				NOT = { militancy = 2 }
+				militancy = 1.5
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { militancy = 1.5 }
+				militancy = 1
+			}
+			modifier = {
+				factor = 0.05
+				NOT = { militancy = 1 }
+				militancy = 0.5
+			}
+			modifier = {
+				factor = 0
+				NOT = { militancy = 0.5 }
+			}		
+		}
+		remove_social_reform = {
+			factor = 0
+		}	
+	}
+	
+	anarcho_liberal = {
+		color = { 150 150 10 }
+		date = 1848.1.1
+		
+		add_political_reform = {
+			factor = 0
+		}
+		remove_political_reform = {
+			factor = 0
+		}
+		add_social_reform = {
+			factor = 0
+		}
+		remove_social_reform = {
+			factor = 1
+		}
+	}
+}
+	

@@ -1,0 +1,432 @@
+ ##########################################
+# Issues that parties have.
+##########################################
+party_issues = {
+	trade_policy = {
+		protectionism = {
+			max_tariff = 1
+			min_tariff = -0.25
+		}
+		free_trade = {
+			max_tariff = 0.25
+			min_tariff = -1
+		}
+	}
+	economic_policy = {
+		laissez_faire = {
+			max_tax = 0.5
+			factory_owner_cost = 1.0
+			
+			rules = {
+				build_factory = yes
+				expand_factory = yes
+				open_factory = yes
+				destroy_factory = yes
+				build_railway = yes
+				factory_priority = yes
+				can_subsidise = yes
+				pop_build_factory = yes
+				pop_expand_factory = yes
+				pop_open_factory = yes
+				delete_factory_if_no_input = yes
+			}
+		}
+		interventionism = {
+			factory_owner_cost = 1.5
+			
+			rules = {
+				build_factory = yes
+				expand_factory = yes
+				open_factory = yes
+				destroy_factory = yes
+				build_railway = yes
+				factory_priority = yes
+				can_subsidise = yes
+				pop_build_factory = yes
+				pop_expand_factory = yes
+				pop_open_factory = yes				
+				delete_factory_if_no_input = no				
+			}
+		}
+		state_capitalism = {
+			min_tax = 0.25
+			factory_owner_cost = 2.0
+			
+			rules = {
+				build_factory = yes
+				expand_factory = yes
+				open_factory = yes
+				destroy_factory = yes		
+				build_railway = yes
+				factory_priority = yes
+				can_subsidise = yes
+				pop_build_factory = yes
+				pop_expand_factory = no
+				pop_open_factory = yes				
+				delete_factory_if_no_input = no				
+			}
+		}
+		planned_economy = {
+			min_tax = 0.5
+			factory_owner_cost = -1	#negative costs, can't build.
+			rules = {
+				build_factory = yes
+				expand_factory = yes
+				open_factory = yes
+				destroy_factory = yes		
+				build_railway = yes
+				factory_priority = yes
+				can_subsidise = yes
+				pop_build_factory = no
+				pop_expand_factory = no
+				pop_open_factory = no				
+				delete_factory_if_no_input = no				
+			}
+		}
+	}
+	
+	religious_policy = {
+		pro_atheism = {
+			#no effect
+		}
+		secularized = {
+			#no effect
+		}
+		pluralism = {
+			#no effect
+		}
+		moralism = {
+			#no effect
+		}
+	}
+	citizenship_policy = {
+		residency = {
+			rules = { primary_culture_voting = yes }
+		}
+		limited_citizenship = {
+			rules = { culture_voting = yes }
+		}
+		full_citizenship = {
+			rules = { all_voting = yes }
+		}
+	}
+	war_policy = {
+		jingoism = {
+			max_military_spending = 1.0
+			supply_consumption = 0.1
+			war_exhaustion_effect = 0.5
+			is_jingoism = yes
+		}
+		pro_military = {
+			max_military_spending = 1.0
+			war_exhaustion_effect = 0.7
+		}
+		anti_military = {
+			max_military_spending = 0.75
+			supply_consumption = -0.25
+			war_exhaustion_effect = 1.2
+		}
+		pacifism = {
+			max_military_spending = 0.5
+			supply_consumption = -0.5
+			war_exhaustion_effect = 1.5
+		}
+	}
+}
+
+##########################################
+# Political reforms.
+##########################################
+political_reforms = {
+	slavery = {
+		yes_slavery = {
+			rules = { slavery_allowed = yes }
+		}
+		no_slavery = {
+			rules = { slavery_allowed = no }
+			allow = { 
+				NOT = { average_militancy = 3.0 }
+			}
+
+		}
+	}
+
+	vote_franschise = {
+		next_step_only = yes
+		none_voting = {
+			rich_vote = 0
+			middle_vote = 0
+			poor_vote = 0
+		}
+		landed_voting = {
+			rich_vote = 1
+			middle_vote = 0
+			poor_vote = 0
+		}
+		wealth_weighted_voting = {
+			rich_vote = 2
+			middle_vote = 1
+			poor_vote = 0
+		}
+		wealth_voting = {
+			rich_vote = 1
+			middle_vote = 1
+			poor_vote = 0
+		}
+		universal_weighted_voting = {
+			rich_vote = 3
+			middle_vote = 2
+			poor_vote = 1
+		}
+		universal_voting = {
+			rich_vote = 1
+			middle_vote = 1
+			poor_vote = 1
+		}
+	}
+	
+	
+	upper_house_composition = {
+		party_appointed = {
+			rules = { same_as_ruling_party = yes }
+		}
+		appointed = {
+			rules = { rich_only = yes }
+		}
+		state_equal_weight = {
+			rules = { state_vote = yes }
+			allow = { 
+				NOT = { vote_franschise = none_voting }
+			}
+		}
+		population_equal_weight = {
+			rules = { population_vote = yes }
+			allow = { 
+				NOT = { vote_franschise = none_voting }
+			}
+		}
+	}
+
+	voting_system = {
+		first_past_the_post = {
+			rules = { largest_share = yes }
+			allow = { 
+				NOT = { vote_franschise = none_voting }
+			}
+		}
+		jefferson_method = {
+			rules = { dhont = yes }
+			allow = { 
+				NOT = { vote_franschise = none_voting }
+			}
+		}
+		proportional_representation = {
+			rules = { sainte_laque = yes }
+			allow = { 
+				NOT = { vote_franschise = none_voting }
+			}			
+		}
+	}
+	public_meetings = {
+		no_meeting = {
+			#no immediate effect
+		}
+		yes_meeting = {
+			issue_change_speed = 0.25
+		}
+	}
+	press_rights = {
+		next_step_only = yes
+		state_press = {
+			literacy_con_impact = -0.25
+		}
+		censored_press = {
+			#no immediate effect
+		}
+		free_press = {
+			literacy_con_impact = 0.25
+		}
+	}
+	trade_unions = {
+		next_step_only = yes
+		no_trade_unions = {
+			#no immediate effect
+		}
+		state_controlled = {
+			social_reform_desire = 0.1
+		}
+		non_socialist = {
+			social_reform_desire = 0.2
+		}
+		all_trade_unions = {
+			social_reform_desire = 0.3
+		}
+	}
+	
+	political_parties = {
+		next_step_only = yes
+		underground_parties = {
+			ruling_party_support = 0.2
+		}
+		harassment = {
+			ruling_party_support = 0.15
+		}
+		gerrymandering = {
+			ruling_party_support = 0.10
+		}
+		non_secret_ballots = {
+			ruling_party_support = 0.05
+		}
+		secret_ballots = {
+		}
+	}
+}
+
+##########################################
+# Social reforms.
+##########################################
+social_reforms = {
+	wage_reform = {
+		administrative = yes
+		next_step_only = yes
+		no_minimum_wage = {
+		}
+		trinket_wage = {
+			minimum_wage = 0.20
+			administrative_multiplier = 1
+		}
+		low_minimum_wage = {
+			minimum_wage = 0.40
+			administrative_multiplier = 2
+		}
+		acceptable_minimum_wage = {
+			minimum_wage = 0.60
+			administrative_multiplier = 3
+		}
+		good_minimum_wage = {
+			minimum_wage = 0.80
+			administrative_multiplier = 4
+		}
+	}
+	work_hours = {
+		administrative = yes
+		next_step_only = yes
+		no_work_hour_limit = {
+		}
+		fourteen_hours = {
+			factory_throughput = -0.05
+			poor_luxury_needs = -0.05
+			middle_luxury_needs = -0.05
+			administrative_multiplier = 1
+		}
+		twelve_hours = {
+			factory_throughput = -0.10
+			poor_luxury_needs = -0.10
+			middle_luxury_needs = -0.10
+			administrative_multiplier = 2
+		}
+		ten_hours = {
+			factory_throughput = -0.15
+			poor_luxury_needs = -0.15
+			middle_luxury_needs = -0.15
+			administrative_multiplier = 3
+		}
+		eight_hours = {
+			factory_throughput = -0.20
+			poor_luxury_needs = -0.20
+			middle_luxury_needs = -0.20
+			administrative_multiplier = 4
+		}
+	}
+	safety_regulations = {
+		administrative = yes
+		next_step_only = yes
+		no_safety = {
+		}
+		trinket_safety = {
+			factory_maintenance = 0.25
+			rich_everyday_needs = -0.05
+			middle_everyday_needs = -0.05
+			poor_everyday_needs = -0.05
+			administrative_multiplier = 1
+		}
+		low_safety = {
+			factory_maintenance = 0.50
+			rich_everyday_needs = -0.10
+			middle_everyday_needs = -0.10
+			poor_everyday_needs = -0.10
+			administrative_multiplier = 2
+		}
+		acceptable_safety = {
+			factory_maintenance = 0.75
+			rich_everyday_needs = -0.15
+			middle_everyday_needs = -0.15
+			poor_everyday_needs = -0.15
+			administrative_multiplier = 3
+		}
+		good_safety = {
+			factory_maintenance = 1.0
+			rich_everyday_needs = -0.20
+			middle_everyday_needs = -0.20
+			poor_everyday_needs = -0.20
+			administrative_multiplier = 4
+		}
+	}
+	
+	unemployment_subsidies = {
+		next_step_only = yes
+		no_subsidies = {
+		}
+		trinket_subsidies = {
+			unemployment_benefit = 0.25
+		}
+		low_subsidies = {
+			unemployment_benefit = 0.50
+		}
+		acceptable_subsidies = {
+			unemployment_benefit = 0.75
+		}
+		good_subsidies = {
+			unemployment_benefit = 1.0
+		}
+	}
+	pensions = {
+		next_step_only = yes
+		no_pensions = {
+		}
+		trinket_pensions = {
+			pension_level	= 0.05
+		}
+		low_pensions = {
+			pension_level	= 0.10
+		}
+		acceptable_pensions = {
+			pension_level	= 0.15
+		}
+		good_pensions = {
+			pension_level	= 0.20
+		}
+	}	
+	health_care = {
+		administrative = yes
+		next_step_only = yes
+		no_health_care = {
+		}
+		trinket_health_care = {
+			global_population_growth = 0.001
+			administrative_multiplier = 1
+		}
+		low_health_care = {
+			global_population_growth = 0.002
+			administrative_multiplier = 2
+		}
+		acceptable_health_care = {
+			global_population_growth = 0.003
+			administrative_multiplier = 3
+		}
+		good_health_care = {
+			global_population_growth = 0.004
+			administrative_multiplier = 4
+		}
+	}	
+}
